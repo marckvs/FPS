@@ -19,16 +19,18 @@ public class Weapon : MonoBehaviour {
     public Transform shootPoint;
     public GameObject hitParticles;
     public GameObject bulletImpact;
-    
 
     private bool isReloading;
     private AnimatorStateInfo info;
 
+    public GameObject bulletObject;
+    public Bullet bullet;
+
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
-        currentBullets = 0;
-
+        bullet = bulletObject.GetComponent<Bullet>();
+        currentBullets = 3;
     }
 
     void Update()
@@ -69,7 +71,7 @@ public class Weapon : MonoBehaviour {
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range))
+        /*if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name + "found");
 
@@ -79,7 +81,13 @@ public class Weapon : MonoBehaviour {
             Destroy(bulletImpactEffect, 1f);
         
 
-        }
+        }*/
+
+        Debug.Log("Fire");
+
+        GameObject bullet = Instantiate(bulletObject, shootPoint.position, shootPoint.rotation);
+        Rigidbody rigidBody = bullet.GetComponent<Rigidbody>();
+        rigidBody.AddForce(4000 * shootPoint.forward);
 
         anim.CrossFadeInFixedTime("Fire", fireRate);
 
