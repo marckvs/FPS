@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    [HideInInspector] public enum BulletType { SevenMilimetres, FiveMilimetres};
-    [HideInInspector] public BulletType type;
-    [HideInInspector] public float force;
-    [HideInInspector] public Rigidbody rigidBody;
 }
