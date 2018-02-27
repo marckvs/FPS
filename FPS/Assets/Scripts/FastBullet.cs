@@ -5,11 +5,12 @@ using UnityEngine;
 public class FastBullet : BaseBullet {
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    public override void Setup()
+    {
         type = BulletType.Fast;
-        damage = DamageType.High;
-        velocity = 5000;
-	}
+        damage = DamageType.Low;
+        velocity = 5000f;
+    }
 
 }

@@ -1026,7 +1026,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971250215201890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.505, z: 0.834}
+  m_LocalPosition: {x: 0.158, y: 1.505, z: 0.834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4172721440627998}
@@ -1997,15 +1997,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85a5f1d03b3c3b4ab730b66b2dc587c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponManager: {fileID: 0}
   range: 100
   bulletsPerMag: 20
   bulletsLeft: 100
   currentBullets: 0
-  fireRate: 0.1
   shootPoint: {fileID: 4118787158641666}
-  hitParticles: {fileID: 0}
-  bulletImpact: {fileID: 1235035097298946, guid: 185670442f09ad3418727737328f2ca1,
-    type: 2}
+  fireRate: 0.1
+  fireTimer: 0
+  isReloading: 0
 --- !u!114 &114940345313499624
 MonoBehaviour:
   m_ObjectHideFlags: 1

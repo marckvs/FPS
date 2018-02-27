@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 464899823}
   - component: {fileID: 464899824}
   m_Layer: 0
-  m_Name: BulletController
+  m_Name: WeaponManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,9 +313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86de5541be7845f43b930ca464f8ed45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletObjects:
-  - {fileID: 1761525630625202, guid: ab26ef971b6b4124f87b57f78fbbcb30, type: 2}
-  bullets: []
+  weapon: {fileID: 676929962}
+  activeBulletIndex: 0
+  bullets:
+  - {fileID: 114972259211804204, guid: ab26ef971b6b4124f87b57f78fbbcb30, type: 2}
+  - {fileID: 114279356999585020, guid: cd376940a73e51e48b975f62f30d1427, type: 2}
+  - {fileID: 114419962530125166, guid: c5a81bf237eec934a90904046c3f4b12, type: 2}
 --- !u!4 &467324462 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 90d8e09703679534295bd2cacb73d6de, type: 2}
@@ -370,6 +373,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90d8e09703679534295bd2cacb73d6de, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &676929962 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114427438961532802, guid: bf3a2279e99c54f449c109fc63c69a59,
+    type: 2}
+  m_PrefabInternal: {fileID: 1169876056}
+  m_Script: {fileID: 11500000, guid: c85a5f1d03b3c3b4ab730b66b2dc587c, type: 3}
 --- !u!1 &680450994
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,31 +625,6 @@ Prefab:
     - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114427438961532802, guid: bf3a2279e99c54f449c109fc63c69a59,
-        type: 2}
-      propertyPath: hitParticles
-      value: 
-      objectReference: {fileID: 1617700753897852, guid: 2fc51477906b5d44b93e53cc25b2d012,
-        type: 2}
-    - target: {fileID: 114427438961532802, guid: bf3a2279e99c54f449c109fc63c69a59,
-        type: 2}
-      propertyPath: bulletObject
-      value: 
-      objectReference: {fileID: 1761525630625202, guid: ab26ef971b6b4124f87b57f78fbbcb30,
-        type: 2}
-    - target: {fileID: 4118787158641666, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.158
-      objectReference: {fileID: 0}
-    - target: {fileID: 20884740781313242, guid: bf3a2279e99c54f449c109fc63c69a59,
-        type: 2}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4118787158641666, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.834
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}

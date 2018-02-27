@@ -4,8 +4,9 @@ using UnityEngine;
 
 abstract public class BaseWeapon : MonoBehaviour {
 
+    public WeaponManager weaponManager;
+
     protected Animator anim;
-    protected BulletManager bM;
 
     public float range;
 
@@ -13,20 +14,49 @@ abstract public class BaseWeapon : MonoBehaviour {
     public int bulletsLeft;
     public int currentBullets;
 
-    public FastBullet fastBullet;
+    public Transform shootPoint;
 
     public float fireRate;
     public float fireTimer;
 
-    public Transform shootPoint;
+    public bool isReloading;
+    public AnimatorStateInfo info;
 
-    protected bool isReloading;
-    protected AnimatorStateInfo info;
+    public abstract void Setup();
 
+    void Start()
+    {
+        weaponManager = GameObject.FindObjectOfType<WeaponManager>();
+    }
 
-    void Fire() { }
+    void Fire()
+    {
+        GameObject gO = Instantiate(weaponManager.bullets[weaponManager.activeBulletIndex].gameObject, shootPoint.position, shootPoint.rotation);
 
-    
+        Rigidbody rBodyBullet = gO.GetComponent<Rigidbody>();
+        
+        rBodyBullet.AddForce(weaponManager.bullets[weaponManager.activeBulletIndex].velocity * shootPoint.transform.forward);
+
+        fireTimer = 0;
+        currentBullets--;
+    }
+
+    protected void CheckFire()
+    {
+
+        Debug.DrawRay(shootPoint.position, shootPoint.transform.forward, Color.red);
+
+        if (Input.GetButton("Fire1") && fireTimer > fireRate && currentBullets > 0 && !IsReloading())
+        {
+            Fire();
+        }
+
+        if (fireTimer < fireRate)
+        {
+            fireTimer += Time.deltaTime;
+        }
+    }
+
 
     protected void CheckReload()
     {
@@ -56,10 +86,19 @@ abstract public class BaseWeapon : MonoBehaviour {
 
     protected void DoReload()
     {
-
         if (IsReloading()) return;
 
         anim.CrossFadeInFixedTime("Reload", fireRate);
     }
 
+    void FixedUpdate()
+    {
+        CheckReload();
+        CheckFire();
+    }
+
+    void Update()
+    {
+        info = anim.GetCurrentAnimatorStateInfo(0);
+    }
 }

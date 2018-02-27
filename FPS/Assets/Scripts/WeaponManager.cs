@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour {
 
-    public BaseWeapon[] weapons;
+    
+    public BaseWeapon weapon;
 
-    private BaseWeapon activeWeapon;
+    public int activeBulletIndex;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public BaseBullet[] bullets;
+
+    void Start()
+    {
+        weapon.Setup();
+
+        activeBulletIndex = 0;
+        foreach (BaseBullet b in bullets)
+        {
+            b.Setup();
+        }
+
+    }
+
+    
 }
